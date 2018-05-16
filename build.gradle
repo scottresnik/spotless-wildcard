@@ -30,11 +30,15 @@ repositories {
   jcenter()
 }
 
+ext {
+  aSet = ['abcd','sdfsdfb','sdfsdfdsc','sdsdfdsdfdsfd'] as Set<String>
+}
+
 spotless {
   groovyGradle {
     target '*.gradle', 'gradle/*.gradle'
     importOrderFile(file('ide/eclipse.importorder'))
-    greclipse().configFile(rootProject.files('ide/eclipse_format.xml'))
+    greclipse().configFile(rootProject.files('ide/eclipse_format.xml', 'ide/org.codehaus.groovy.eclipse.ui.prefs'))
     paddedCell()
   }
   java {
